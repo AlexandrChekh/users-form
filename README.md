@@ -1,3 +1,9 @@
+# Описание
+
+1. Как войти?
+   email: "asdf@mail.ru",
+   password: "Qwerty12"
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

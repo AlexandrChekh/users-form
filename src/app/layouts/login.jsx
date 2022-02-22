@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import LoginForm from "../components/ui/loginForm";
 import { login } from "../mocked-api/auth";
 import { AuthContext } from "./../AuthContext";
@@ -12,6 +13,10 @@ const Login = () => {
         authContext.setUserInfo(user);
         history.push("/Main?page=1");
     };
+
+    if (authContext.userInfo) {
+        return <Redirect to={"/Main"} />;
+    }
 
     return (
         <div className="container mt-5">

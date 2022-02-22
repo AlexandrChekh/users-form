@@ -6,6 +6,7 @@ import Table from "../components/common/table/table";
 import Logout from "../components/ui/logout";
 import { fetchUsers, deleteUser, sort } from "../mocked-api/users";
 import { UserContext } from "../UserContext";
+
 export function useQuery() {
     const { search } = useLocation();
 

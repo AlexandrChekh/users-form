@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {
-    Route,
     Switch,
-    Redirect
+    Redirect,
+    Route
 } from "react-router-dom/cjs/react-router-dom.min";
 import Main from "./layouts/main";
 import Login from "./layouts/login";
@@ -10,6 +10,8 @@ import User from "./layouts/user";
 import { AuthContext } from "./AuthContext";
 import { UserContext } from "./UserContext";
 import Edit from "./layouts/edit";
+import SecuredRoute from "./components/common/securedRoute";
+import NotFound from "./components/common/notFound";
 function App() {
     const [userInfo, setUserInfo] = useState(null);
     const [users, setUsers] = useState([]);
@@ -19,20 +21,14 @@ function App() {
             <UserContext.Provider value={{ users, setUsers }}>
                 <div>
                     <Switch>
-                        {userInfo === null && (
-                            <>
-                                <Route path="/" exact component={Login} />
-                            </>
-                        )}
-                        {userInfo !== null && (
-                            <>
-                                <Route exact path="/Main" component={Main} />
-                                <Route path="/Main/:UserId" component={Edit} />
-                                <Route path="/UserItem" component={User} />
+                        <Route path="/" exact component={Login} />
+                        <SecuredRoute exact path="/Main" component={Main} />
+                        <SecuredRoute path="/Main/:UserId" component={Edit} />
+                        <SecuredRoute path="/UserItem" component={User} />
+                        <SecuredRoute path="/404" component={NotFound} />
 
-                                <Redirect from="/" to="Main?page=1" />
-                            </>
-                        )}
+                        <Redirect from="/" to="Main?page=1" />
+                        <Redirect to="/404" />
                     </Switch>
                 </div>
             </UserContext.Provider>

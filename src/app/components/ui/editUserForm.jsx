@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import * as yup from "yup";
-import TextField from "../common/text-field";
+import TextField from "../common/textField";
 import SelectField from "../common/selectField";
 import { fetchAll } from "../../mocked-api/cities";
 import { Link, useHistory, useParams } from "react-router-dom";
